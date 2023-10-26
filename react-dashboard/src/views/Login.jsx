@@ -2,20 +2,48 @@ import {Link} from "react-router-dom";
 import axiosClient from "../axios-client.js";
 import {createRef} from "react";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
-import { useState } from "react";
+import { useState, useEffect} from "react";
+import image from "../ImageImporter.jsx";
+import '../css/login.css';
 
 export default function Login() {
-  const emailRef = createRef()
-  const passwordRef = createRef()
-  const { setUser, setToken } = useStateContext()
+  // Login Reference Variable
+  const emailLoginRef = createRef()
+  const passwordLoginRef = createRef()
+
+  // SignUp Reference Variable
+  const nameSignUpRef = createRef()
+  const emailSignUpRef = createRef()
+  const passwordSignUpRef = createRef()
+  const passwordConfirmationSignUpRef = createRef()
+
+  const [errors, setErrors] = useState(null)
+  const {setUser, setToken } = useStateContext()
   const [message, setMessage] = useState(null)
 
-  const onSubmit = ev => {
+  const [isSignUp, setIsSignUp] = useState(false);
+
+  useEffect(() => {
+    const currentUrl = window.location.pathname;
+    if (currentUrl === '/signup') {
+      setIsSignUp(true);
+    }
+  }, []);
+
+  const handleSignUp = () => {
+    setIsSignUp(true);
+  };
+
+  const handleSignIn = () => {
+    setIsSignUp(false);
+  };
+
+  const onSubmitLogin = ev => {
     ev.preventDefault()
 
     const payload = {
-      email: emailRef.current.value,
-      password: passwordRef.current.value,
+      email: emailLoginRef.current.value,
+      password: passwordLoginRef.current.value,
     }
     axiosClient.post('/login', payload)
       .then(({data}) => {
@@ -30,31 +58,150 @@ export default function Login() {
       })
   }
 
+  const onSubmitRegister = ev => {
+    ev.preventDefault()
+
+    const payload = {
+      name: nameSignUpRef.current.value,
+      email: emailSignUpRef.current.value,
+      password: passwordSignUpRef.current.value,
+      password_confirmation: passwordConfirmationSignUpRef.current.value,
+    }
+    axiosClient.post('/signup', payload)
+      .then(({data}) => {``
+        setUser(data.user)
+        setToken(data.token);
+      })
+      .catch(err => {
+        const response = err.response;
+        if (response && response.status === 422) {
+          setErrors(response.data.errors)
+        }
+      })
+  }
+
+
   return (
-   <div className="container-fluid" style={{backgroundColor: "#59D1EF"}}>
-    <div className="d-flex justify-content-center align-items-center vh-100">
-      <div className="w-50 h-auto p-4 bg-white rounded">
-        <p className="text-center fw-bold fs-3">Sign in Into Your Account</p>
-        {message &&
+    <div className={`wrapper ${isSignUp ? 'sign-up-mode' : ''}`}>
+    <div className="forms-wrapper">
+      <div className="signin-signup">
+        {/* Login Form Start*/}
+        <form className="sign-in-form" onSubmit={onSubmitLogin}>
+          <h2 className="title">Sign in</h2>
+          <div className="input-field">
+            <i class="fa-solid fa-envelope"></i>
+            <input ref={emailLoginRef} type="email" id="email" placeholder="Email"/>
+          </div>
+          <div className="input-field">
+            <i className="fas fa-lock"></i>
+            <input ref={passwordLoginRef} type="password" id="password" placeholder="Password" />
+          </div>
+          {message &&
             <div className="alert alert-danger">
               <p>{message}</p>
             </div>
           }
-        <form className="m-4" onSubmit={onSubmit}>
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email address</label>
-            <input ref={emailRef} type="email" className="form-control border-black" id="email"/>
+          <input type="submit" value="Login" className="buttton solid" />
+          <p className="social-text">Or Sign in with social platforms</p>
+          <div className="social-media">
+            <a href="#" className="social-icon">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" className="social-icon">
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a href="#" className="social-icon">
+              <i className="fab fa-google"></i>
+            </a>
+            <a href="#" className="social-icon">
+              <i className="fab fa-linkedin-in"></i>
+            </a>
           </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">Password</label>
-            <input ref={passwordRef} type="password" className="form-control border-black" id="password" />
-          </div>
-          <button type="submit" className="btn btn-primary w-100 my-4">Submit</button>
-
-          <p className="text-center mt-4">Not registered? <Link to="/signup">Create an account</Link></p>
         </form>
+         {/* Login Form End*/}
+
+        {/* SignUp Form Start */}
+        <form className="sign-up-form" onSubmit={onSubmitRegister}>
+          <h2 className="title">Sign up</h2>
+          <div className="input-field">
+            <i className="fas fa-user"></i>
+            <input ref={nameSignUpRef} type="text" placeholder="Username" />
+          </div>
+          <div className="input-field">
+            <i className="fas fa-envelope"></i>
+            <input ref={emailSignUpRef} type="email" placeholder="Email" />
+          </div>
+          <div className="input-field">
+            <i className="fas fa-lock"></i>
+            <input ref={passwordSignUpRef} type="password" placeholder="Password" />
+          </div>
+          <div className="input-field">
+            <i className="fas fa-lock"></i>
+            <input ref={passwordConfirmationSignUpRef} type="password" placeholder="Confirmation Password" />
+          </div>
+          {errors &&
+            <div className="alert alert-danger">
+              {Object.keys(errors).map(key => (
+                <p key={key}>{errors[key][0]}</p>
+              ))}
+            </div>
+          }
+          <input type="submit" className="buttton" value="Sign up" />
+          <p className="social-text">Or Sign up with social platforms</p>
+          <div className="social-media">
+            <a href="#" className="social-icon">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" className="social-icon">
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a href="#" className="social-icon">
+              <i className="fab fa-google"></i>
+            </a>
+            <a href="#" className="social-icon">
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </form>
+        {/* SignUp Form End */}
       </div>
     </div>
-   </div>
+
+    <div className="panels-wrapper">
+      {/* Login Panel */}
+      <div className="panel left-panel">
+        <div className="content">
+          <h3>New here ?</h3>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
+            ex ratione. Aliquid!
+          </p>
+          <Link to="/signup">
+            <button className="buttton transparent" id="sign-up-buttton" onClick={handleSignUp}>
+              Sign up
+            </button>
+          </Link>
+        </div>
+        <img src={image.LoginVector} className="image" alt="Login Vector" />
+      </div>
+
+      {/* SingUp Panel */}
+      <div className="panel right-panel">
+        <div className="content">
+          <h3>One of us ?</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+            laboriosam ad deleniti.
+          </p>
+          <Link to="/login">
+            <button className="buttton transparent" id="sign-in-buttton" onClick={handleSignIn}>
+              Sign in
+            </button>
+          </Link>
+        </div>
+        <img src={image.RegisterVector} className="image" alt="Register Vector" />
+      </div>
+    </div>
+  </div>
   )
 }

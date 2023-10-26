@@ -1,58 +1,60 @@
 import {Link} from "react-router-dom";
-import {createRef, useState} from "react";
 import axiosClient from "../axios-client.js";
+import {createRef} from "react";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
+import { useState } from "react";
 
-export default function Signup() {
-  const nameRef = createRef()
+export default function Login() {
   const emailRef = createRef()
   const passwordRef = createRef()
-  const passwordConfirmationRef = createRef()
-  const {setUser, setToken} = useStateContext()
-  const [errors, setErrors] = useState(null)
+  const { setUser, setToken } = useStateContext()
+  const [message, setMessage] = useState(null)
 
   const onSubmit = ev => {
     ev.preventDefault()
 
     const payload = {
-      name: nameRef.current.value,
       email: emailRef.current.value,
       password: passwordRef.current.value,
-      password_confirmation: passwordConfirmationRef.current.value,
     }
-    axiosClient.post('/signup', payload)
+    axiosClient.post('/login', payload)
       .then(({data}) => {
         setUser(data.user)
         setToken(data.token);
       })
-      .catch(err => {
+      .catch((err) => {
         const response = err.response;
         if (response && response.status === 422) {
-          setErrors(response.data.errors)
+          setMessage(response.data.message)
         }
       })
   }
 
   return (
-    <div className="login-signup-form animated fadeInDown">
-      <div className="form">
-        <form onSubmit={onSubmit}>
-          <h1 className="title">Signup for Free</h1>
-          {errors &&
-            <div className="alert">
-              {Object.keys(errors).map(key => (
-                <p key={key}>{errors[key][0]}</p>
-              ))}
+   <div className="container-fluid" style={{backgroundColor: "#59D1EF"}}>
+    <div className="d-flex justify-content-center align-items-center vh-100">
+      <div className="w-50 h-auto p-4 bg-white rounded">
+        <p className="text-center fw-bold fs-3">Sign in Into Your Account</p>
+        {message &&
+            <div className="alert alert-danger">
+              <p>{message}</p>
             </div>
           }
-          <input ref={nameRef} type="text" placeholder="Full Name"/>
-          <input ref={emailRef} type="email" placeholder="Email Address"/>
-          <input ref={passwordRef} type="password" placeholder="Password"/>
-          <input ref={passwordConfirmationRef} type="password" placeholder="Repeat Password"/>
-          <button className="btn btn-block">Signup</button>
-          <p className="message">Already registered? <Link to="/login">Sign In</Link></p>
+        <form className="m-4" onSubmit={onSubmit}>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">Email address</label>
+            <input ref={emailRef} type="email" className="form-control border-black" id="email"/>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">Password</label>
+            <input ref={passwordRef} type="password" className="form-control border-black" id="password" />
+          </div>
+          <button type="submit" className="btn btn-primary w-100 my-4">Submit</button>
+
+          <p className="text-center mt-4">Not registered? <Link to="/signup">Create an account</Link></p>
         </form>
       </div>
     </div>
+   </div>
   )
 }
