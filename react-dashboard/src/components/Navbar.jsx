@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 export default function Navbar({currentPage}){
     return (
-        <div className="col-2 bg-warning vh-100 fixed d-flex flex-column">
-          <div className="py-2 border-bottom border-black">
+        <div className="col-2 vh-100 fixed d-flex flex-column" style={{backgroundColor: "#04befe"}}>
+          <div className="py-3 border-bottom border-black">
             <p className="text-center fw-bolder fs-4 my-auto">Control Panel</p>
           </div>
           <div className="w-100 py-2 h-auto">

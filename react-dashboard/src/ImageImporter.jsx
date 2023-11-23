@@ -1,9 +1,7 @@
-import LoginVector from './assets/vector/log.svg';
-import RegisterVector from './assets/vector/register.svg';
+import Dashboard from './assets/images/dashboard.png';
 
 const image = {
-  LoginVector,
-  RegisterVector
+  Dashboard,
 }
 
 export default image;

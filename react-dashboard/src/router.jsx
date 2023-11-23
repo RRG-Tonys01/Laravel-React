@@ -7,6 +7,7 @@ import GuestLayout from "./components/GuestLayout";
 import Dashboard from "./views/Dashboard";
 import Table from "./views/Table";
 import Graph from "./views/Graph";
+import Home from "./views/Home";
 
 
 const router = createBrowserRouter([
@@ -41,13 +42,17 @@ const router = createBrowserRouter([
     element: <GuestLayout/>,
     children: [
       {
+        path: '/home',
+        element: <Home/>
+      },
+      {
         path: '/login',
         element: <Login/>
       },
       {
         path: '/signup',
         element: <Login/>
-      },
+      }
     ]
   },
   {

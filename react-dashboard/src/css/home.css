@@ -1,0 +1,66 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.home__container{
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: url(../assets/gif/space-city.gif);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  backdrop-filter: blur(50%);
+}
+
+.home__section-hero{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 6rem;
+}
+
+.home__section-hero h2{
+  font-weight: 200;
+  font-size: 4rem;
+  text-align: center;
+  color: #0C3C41;
+}
+
+.home__navigation{
+  width: 75%;
+  padding: 2rem;
+  display: flex;
+  margin: 4rem auto;
+  justify-content: space-around;
+}
+
+.nav__circle{
+  width: 11rem;
+  height: 11rem;
+  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 75%);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #549493;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+}
+
+.nav__circle:hover{
+  background: linear-gradient(60deg, #8fd3f4 0%, #84fab0 75%);
+  transition: 0.3s;
+  color: #0C3C41;
+}
+
+.nav__circle .nav__link{
+  text-align: center;
+  font-weight: 200;
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+

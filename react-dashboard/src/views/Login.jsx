@@ -3,7 +3,7 @@ import axiosClient from "../axios-client.js";
 import {createRef} from "react";
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 import { useState, useEffect} from "react";
-import image from "../ImageImporter.jsx";
+import vector from "../VectorImporter.jsx";
 import '../css/login.css';
 
 export default function Login() {
@@ -182,7 +182,7 @@ export default function Login() {
             </button>
           </Link>
         </div>
-        <img src={image.LoginVector} className="image" alt="Login Vector" />
+        <img src={vector.LoginVector} className="image" alt="Login Vector" />
       </div>
 
       {/* SingUp Panel */}
@@ -199,7 +199,7 @@ export default function Login() {
             </button>
           </Link>
         </div>
-        <img src={image.RegisterVector} className="image" alt="Register Vector" />
+        <img src={vector.RegisterVector} className="image" alt="Register Vector" />
       </div>
     </div>
   </div>
