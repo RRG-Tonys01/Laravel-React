@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->id();
+            $table->id('employeeID');
             $table->text('employee_name');
             $table->text('email');
             $table->text('address');
@@ -20,8 +20,10 @@ return new class extends Migration
             $table->text('phone_number');
             $table->bigInteger('positionID')->unsigned();
             $table->date('hire_date');
-            $table->bigInteger('salary')
-            $table->timestamps();
+            $table->bigInteger('salary');
+
+            $table->foreign('positionID')->references('positionID')->on('positions')->onDelete('cascade');
+            // $table->timestamps();
         });
     }
 

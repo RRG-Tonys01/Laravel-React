@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('employee_statuses', function (Blueprint $table) {
-            $table->id();
+            $table->id('empStatID');
             $table->text('status_name');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

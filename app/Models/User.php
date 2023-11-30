@@ -13,21 +13,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function tasks(): BelongsToMany{
-        return $this->belongsToMany(Task::class);
-    }
-
-    public function categories(): BelongsToMany{
-        return $this->belongsToMany(Category::class);
-    }
-
-    public function comments(): BelongsToMany{
-        return $this->belongsToMany(Comment::class);
-    }
-
-
-
-
     /**
      * The attributes that are mass assignable.
      *
