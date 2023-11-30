@@ -12,7 +12,7 @@ class ATM extends Model
     /**
      * Get the employee that owns the ATM.
     */
-    public function EmployeeDetail(): BelongsTo
+    public function employeeDetail(): BelongsTo
     {
         return $this->belongsTo(EmployeeDetail::class);
     }
