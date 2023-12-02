@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('employee_details', function (Blueprint $table) {
             $table->bigInteger('employeeID')->unsigned();
-            $table->bigInteger('ATM_ID')->unsigned();
+            $table->bigInteger('bankID')->unsigned();
             $table->text('ATM_number');
             $table->boolean('gender');
             $table->bigInteger('EduID')->unsigned();
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->date('leave_date');
 
             $table->foreign('employeeID')->references('employeeID')->on('employees')->onDelete('cascade');
-            $table->foreign('ATM_ID')->references('ATM_ID')->on('atms')->onDelete('cascade');
+            $table->foreign('bankID')->references('bankID')->on('banks')->onDelete('cascade');
             $table->foreign('EduID')->references('EduID')->on('educations')->onDelete('cascade');
 
             // $table->timestamps();

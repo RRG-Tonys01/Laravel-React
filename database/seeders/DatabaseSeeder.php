@@ -20,8 +20,11 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
+            BankTypeSeeder::class,
+            BankSeeder::class,
             // UserSeeder::class,
             // PostSeeder::class,
+            // CommentSeeder::class,
             // CommentSeeder::class,
         ]);
     }

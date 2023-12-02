@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ATM extends Model
+class Bank extends Model
 {
-    protected $table = 'atms';
+    protected $table = 'banks';
 
     /**
      * Get the employee that owns the ATM.
@@ -17,11 +18,23 @@ class ATM extends Model
         return $this->belongsTo(EmployeeDetail::class);
     }
 
+    public function bankType(): BelongsTo
+    {
+        return $this->belongsTo(BankType::class);
+    }
+
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
     */
-    protected $fillable = [ 'ATM_name', 'substation'];
+    protected $fillable = [
+        'bank_name',
+        'BtypeID',
+        'adress',
+        'phone_number',
+        'fax_number',
+        'website',
+    ];
 }

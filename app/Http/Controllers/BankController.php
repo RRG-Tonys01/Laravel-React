@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ATM;
-use App\Http\Requests\StoreATMRequest;
-use App\Http\Requests\UpdateATMRequest;
+use App\Models\Bank;
+use App\Http\Requests\StoreBankRequest;
+use App\Http\Requests\UpdateBankRequest;
 
-class ATMController extends Controller
+class BankController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class ATMController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreATMRequest $request)
+    public function store(StoreBankRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class ATMController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ATM $aTM)
+    public function show(Bank $bank)
     {
         //
     }
@@ -43,7 +43,7 @@ class ATMController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ATM $aTM)
+    public function edit(Bank $bank)
     {
         //
     }
@@ -51,7 +51,7 @@ class ATMController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateATMRequest $request, ATM $aTM)
+    public function update(UpdateBankRequest $request, Bank $bank)
     {
         //
     }
@@ -59,7 +59,7 @@ class ATMController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ATM $aTM)
+    public function destroy(Bank $bank)
     {
         //
     }

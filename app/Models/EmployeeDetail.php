@@ -15,13 +15,24 @@ class EmployeeDetail extends Model
         return $this->belongsTo(Employee::class);
     }
 
-    public function atm(): HasOne
+    public function bank(): HasOne
     {
-        return $this->hasOne(ATM::class);
+        return $this->hasOne(Bank::class);
     }
 
     public function education(): BelongsTo
     {
         return $this->belongsTo(Education::class);
     }
+
+    protected $fillable = [
+        'bankID',
+        'ATM_number',
+        'gender',
+        'EduID',
+        'tax_id_number',
+        'health_insurance_number',
+        'emergency_number',
+        'leave_date',
+    ];
 }

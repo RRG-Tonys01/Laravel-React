@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ATMs', function (Blueprint $table) {
-            $table->id('ATM_ID');
-            $table->text('ATM_name');
-            $table->text('substation');
-            // $table->timestamps();
+        Schema::create('bank_types', function (Blueprint $table) {
+            $table->id('BtypeID');
+            $table->text('type_name');
         });
     }
 
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('a_t_m_s');
+        Schema::dropIfExists('bank_types');
     }
 };

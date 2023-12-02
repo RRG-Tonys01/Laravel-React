@@ -13,4 +13,6 @@ class EmployeeStatus extends Model
     {
         return $this->belongsTo(EmployeeAccount::class);
     }
+
+    protected $fillable = ['status_name'];
 }
