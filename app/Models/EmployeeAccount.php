@@ -37,6 +37,7 @@ class EmployeeAccount extends Model
         'private_email',
         'password',
         'empStatID',
+        'roleID',
     ];
 
      /**
