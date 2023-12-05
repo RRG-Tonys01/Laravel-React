@@ -24,6 +24,9 @@ class DatabaseSeeder extends Seeder
             BankSeeder::class,
             DepartmentSeeder::class,
             PositionSeeder::class,
+            EducationSeeder::class,
+            EmployeeStatusSeeder::class,
+            EmployeeSeeder::class,
         ]);
     }
 }

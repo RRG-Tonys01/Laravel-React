@@ -9,7 +9,10 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Employee extends Model
 {
+    use HasFactory;
+
     protected $table = 'employees';
+    public $timestamps = false;
 
     public function positions(): BelongsTo
     {

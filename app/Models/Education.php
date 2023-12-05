@@ -15,5 +15,10 @@ class Education extends Model
         return $this->hasMany(EmployeeDetail::class);
     }
 
-    protected $fillable = [ 'education_name', 'major'];
+    public function eduList(): HasMany
+    {
+        return $this->hasMany(EduList::class);
+    }
+
+    protected $fillable = [ 'edu_rank'];
 }

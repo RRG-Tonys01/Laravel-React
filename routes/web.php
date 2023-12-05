@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Position;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $array = ['apple', 'banana', 'cherry', 'date'];
+
+    $randomKey = array_rand($array);
+
+    $randomValue = $array[$randomKey];
+
+    echo $randomValue;
 });
