@@ -45,6 +45,7 @@ export default function Login() {
       email: emailLoginRef.current.value,
       password: passwordLoginRef.current.value,
     }
+
     axiosClient.post('/login', payload)
       .then(({data}) => {
         setUser(data.user)
@@ -68,7 +69,7 @@ export default function Login() {
       password_confirmation: passwordConfirmationSignUpRef.current.value,
     }
     axiosClient.post('/signup', payload)
-      .then(({data}) => {``
+      .then(({data}) => {
         setUser(data.user)
         setToken(data.token);
       })
@@ -89,7 +90,7 @@ export default function Login() {
         <form className="sign-in-form" onSubmit={onSubmitLogin}>
           <h2 className="title">Sign in</h2>
           <div className="input-field">
-            <i class="fa-solid fa-envelope"></i>
+            <i className="fa-solid fa-envelope"></i>
             <input ref={emailLoginRef} type="email" id="email" placeholder="Email"/>
           </div>
           <div className="input-field">
