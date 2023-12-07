@@ -20,10 +20,9 @@ return new class extends Migration
             $table->text('phone_number');
             $table->bigInteger('positionID')->unsigned();
             $table->date('hire_date');
-            $table->bigInteger('salary');
+            $table->bigInteger('salary')->nullable();
 
             $table->foreign('positionID')->references('positionID')->on('positions')->onDelete('cascade');
-            // $table->timestamps();
         });
     }
 

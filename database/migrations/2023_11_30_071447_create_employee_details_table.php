@@ -17,16 +17,14 @@ return new class extends Migration
             $table->text('ATM_number');
             $table->boolean('gender');
             $table->bigInteger('EduID')->unsigned();
-            $table->text('tax_id_number');
-            $table->text('health_insucrance_number');
-            $table->text('emergency_number');
-            $table->date('leave_date');
+            $table->text('tax_id_number')->nullable();
+            $table->text('health_insucrance_number')->nullable();
+            $table->text('emergency_number')->nullable();
+            $table->date('leave_date')->nullable();
 
             $table->foreign('employeeID')->references('employeeID')->on('employees')->onDelete('cascade');
             $table->foreign('bankID')->references('bankID')->on('banks')->onDelete('cascade');
             $table->foreign('EduID')->references('EduID')->on('educations')->onDelete('cascade');
-
-            // $table->timestamps();
         });
     }
 

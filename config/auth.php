@@ -13,9 +13,14 @@ return [
     |
     */
 
+    // 'defaults' => [
+    //     'guard' => 'web',
+    //     'passwords' => 'employees',
+    // ],
+
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'employee_accounts',
     ],
 
     /*
@@ -35,18 +40,34 @@ return [
     |
     */
 
+    // 'guards' => [
+    //     'web' => [
+    //         'driver' => 'session',
+    //         'provider' => 'users',
+    //     ],
+    //     'api' => [
+    //         'driver' => 'token',
+    //         'provider' => 'users',
+    //     ],
+    //     'user' => [
+    //         'driver' => 'session',
+    //         'provider' => 'users',
+    //     ],
+    // ],
+
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'employee_accounts',
         ],
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'employee_accounts',
         ],
-        'user' => [
+        'employee' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'employee_accounts',
+            'model' => \App\Models\EmployeeAccount::class,
         ],
     ],
 
@@ -67,10 +88,17 @@ return [
     |
     */
 
+    // 'providers' => [
+    //     'users' => [
+    //         'driver' => 'eloquent',
+    //         'model' => App\Models\User::class,
+    //     ],
+    // ],
+
     'providers' => [
-        'users' => [
+        'employee_accounts' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\EmployeeAccount::class,
         ],
     ],
 
@@ -93,9 +121,18 @@ return [
     |
     */
 
+    // 'passwords' => [
+    //     'users' => [
+    //         'provider' => 'users',
+    //         'table' => 'password_reset_tokens',
+    //         'expire' => 60,
+    //         'throttle' => 60,
+    //     ],
+    // ],
+
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'employees' => [
+            'provider' => 'employee_accounts',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

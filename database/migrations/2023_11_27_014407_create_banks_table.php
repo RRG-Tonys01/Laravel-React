@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id('bankID');
             $table->text('bank_name');
             $table->bigInteger('BtypeID')->unsigned();
-            $table->text('address');
-            $table->text('phone_number');
-            $table->text('fax_number');
-            $table->text('website');
+            $table->text('address')->nullable();
+            $table->text('phone_number')->nullable();
+            $table->text('fax_number')->nullable();
+            $table->text('website')->nullable();
 
             $table->foreign('BtypeID')->references('BtypeID')->on('bank_types')->onDelete('cascade');
         });

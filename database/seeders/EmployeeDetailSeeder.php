@@ -32,7 +32,7 @@ class EmployeeDetailSeeder extends Seeder
                 'tax_id_number' => fake()->unique()->numberBetween(0000000000,9999999999),
                 'health_insucrance_number' => fake()->unique()->numberBetween(0000000000,9999999999),
                 'emergency_number' => fake()->unique()->phoneNumber(),
-                'leave_date' => Carbon::createFromFormat('Y-m-d', '2000-01-01'),
+                'leave_date' => NULL,
             ];
 
             EmployeeDetail::insert($data);

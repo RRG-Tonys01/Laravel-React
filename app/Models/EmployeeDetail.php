@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class EmployeeDetail extends Model
 {
     protected $table = 'employee_details';
+    public $timestamps = false;
+
+
 
     public function employee(): BelongsTo
     {

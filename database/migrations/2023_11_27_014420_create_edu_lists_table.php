@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('edu_lists', function (Blueprint $table) {
             $table->bigInteger('EduID')->unsigned();
             $table->text('edu_name');
-            $table->text('major');
+            $table->text('major')->nullable();
 
             $table->foreign('EduID')->references('EduID')->on('educations')->onDelete('cascade');
         });
