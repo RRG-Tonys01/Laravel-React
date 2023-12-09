@@ -12,4 +12,8 @@ class EmployeeController extends Controller
         $employee = Employee::all();
         return response(compact('employee'));
     }
+
+    public function getUserData(Request $request){
+        return response()->json($request->user());
+    }
 }

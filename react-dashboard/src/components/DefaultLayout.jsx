@@ -5,12 +5,12 @@ import {useState, useEffect} from "react";
 import Navbar from "./Navbar";
 
 export default function DefaultLayout() {
-  const {user, token, setUser, setToken, notification} = useStateContext();
+  const {user, token, setUser, setToken} = useStateContext();
   const [timeOfDay, setTimeOfDay] = useState('');
   const location = useLocation();
   const pathname = location.pathname;
 
-  // Split the pathname using '/' as the delimiter and get the last part
+
   const parts = pathname.split('/');
   const desiredPart = parts[parts.length - 1];
 
@@ -29,10 +29,13 @@ export default function DefaultLayout() {
   }
 
   useEffect(() => {
-    axiosClient.get('/user')
-      .then(({data}) => {
-         setUser(data)
+    axiosClient.get('/user',{
+      withCredentials: true,
+    }).then(({data}) => {
+        console.log(data)
+        setUser(data)
       });
+
 
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
@@ -54,19 +57,19 @@ export default function DefaultLayout() {
         <div className="col d-flex flex-column">
           <header className="w-100 bg-light px-4 py-2 my-1 border-bottom border-black d-flex justify-content-between">
             <div className="d-flex flex-column">
-              <p className="fs-5 fw-light my-auto"> <span style={{color: "#4d84e2"}}>Good {timeOfDay}</span>, {user.name}!</p>
+              <p className="fs-5 fw-light my-auto"> <span style={{color: "#4d84e2"}}>Good {timeOfDay}</span>, {user.employee_name}!</p>
               <p className="m-0 fs-6 fw-light" style={{color: "grey"}}>Your Performance this Week</p>
             </div>
             <div className="d-flex py-2">
-              <div class="dropdown my-auto">
-                <button class="btn btn-sm dropdown-toggle border-black" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <div className="dropdown my-auto">
+                <button className="btn btn-sm dropdown-toggle border-black" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Select Category
                 </button>
 
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item">Action</a></li>
-                  <li><a class="dropdown-item">Another action</a></li>
-                  <li><a class="dropdown-item">Something else here</a></li>
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a className="dropdown-item">Action</a></li>
+                  <li><a className="dropdown-item">Another action</a></li>
+                  <li><a className="dropdown-item">Something else here</a></li>
                 </ul>
               </div>
               <a onClick={onLogout} className="ms-4 my-auto text-center text-decoration-none text-black">Logout</a>

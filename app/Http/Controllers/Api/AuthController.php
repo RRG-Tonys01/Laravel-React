@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
+use App\Models\Employee;
 use App\Models\EmployeeAccount;
 use App\Models\User;
 use http\Env\Response;
@@ -43,7 +44,8 @@ class AuthController extends Controller
         $employee = Auth::user();
         if($employee){
             $token = $employee->createToken('main')->plainTextToken;
-            return response(compact('employee', 'token'));
+            $user = Employee::where('employeeID','=', $employee->employeeID)->get();
+            return response(compact('user', 'token'));
         }else {
             return response()->json(['error' => 'User not found'], 401);
         }
