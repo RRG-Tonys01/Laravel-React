@@ -23,13 +23,11 @@ export default function Login() {
       password: passwordLoginRef.current.value,
     }
 
-    console.log(payload)
-
-    axiosClient.get(`${import.meta.env.VITE_API_BASE_URL}/sanctum/csrf-cookie`).then(async() => {
+    // axiosClient.get(`${import.meta.env.VITE_API_BASE_URL}/sanctum/csrf-cookie`).then(async() => {
       axiosClient.post('/login', payload)
       .then(({data}) => {
         setUser(data.user)
-        setToken(data.token);
+        setToken(data.token)
       })
       .catch((err) => {
         const response = err.response;
@@ -37,8 +35,9 @@ export default function Login() {
           setMessage(response.data.message)
         }
       })
-    });
-  }
+    }
+    // );
+  // }
 
   return (
     <div className={`wrapper`}>

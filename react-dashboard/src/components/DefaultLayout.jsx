@@ -29,12 +29,9 @@ export default function DefaultLayout() {
   }
 
   useEffect(() => {
-    axiosClient.get('/user',{
-      withCredentials: true,
-    }).then(({data}) => {
-        console.log(data)
-        setUser(data)
-      });
+    axiosClient.get('/user').then(({data}) => {
+      setUser(data)
+    })
 
 
     const currentTime = new Date();
@@ -57,7 +54,7 @@ export default function DefaultLayout() {
         <div className="col d-flex flex-column">
           <header className="w-100 bg-light px-4 py-2 my-1 border-bottom border-black d-flex justify-content-between">
             <div className="d-flex flex-column">
-              <p className="fs-5 fw-light my-auto"> <span style={{color: "#4d84e2"}}>Good {timeOfDay}</span>, {user.employee_name}!</p>
+              <p className="fs-5 fw-light my-auto"> <span style={{color: "#4d84e2"}}>Good {timeOfDay}</span>, {user.employee_name}</p>
               <p className="m-0 fs-6 fw-light" style={{color: "grey"}}>Your Performance this Week</p>
             </div>
             <div className="d-flex py-2">
@@ -76,7 +73,7 @@ export default function DefaultLayout() {
             </div>
           </header>
           <main className="col">
-            <Outlet/>
+            <Outlet context={user}/>
           </main>
         </div>
     </div>

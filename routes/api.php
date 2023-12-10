@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
-use App\Models\Employee;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,11 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware(['web', 'auth:sanctum'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::get('/user', [Employee::class, 'getUserData']);
+    // Route::get('/user', function(Request $request){
+    //     // $user = $request->user();
+    //     // return $request->user();
+    //     return response('Hello World');
+    // });
 
-    Route::apiResource('/user', Employee::class);
+
+    Route::apiResource('/user', EmployeeController::class);
 });
 
 

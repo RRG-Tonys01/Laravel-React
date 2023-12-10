@@ -8,20 +8,39 @@ const axiosClient = axios.create({
     // 'Access-Control-Allow-Origin': 'true'
   },
   withCredentials: true,
-  withXSRFToken: true
+  // withXSRFToken: true
 })
+
+
+// Fungsi untuk mendapatkan CSRF token
+const getCsrfToken = async () => {
+  try {
+    // Mendapatkan token CSRF
+    await axios.get(`${import.meta.env.VITE_API_BASE_URL}/sanctum/csrf-cookie`);
+      // .then(response => console.log(response))
+      // .catch(error => console.error(error));
+
+    // Mengambil token CSRF dari cookie
+    const csrfToken = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('XSRF-TOKEN='))
+      ?.split('=')[1];
+
+    return csrfToken;
+  } catch (error) {
+    console.error('Gagal mendapatkan token CSRF', error);
+    throw error;
+  }
+};
+
+
 
 axiosClient.interceptors.request.use(async (config) => {
   const token = localStorage.getItem('ACCESS_TOKEN')
+  const csrfToken = await getCsrfToken()
+
+  config.headers['X-XSRF-TOKEN'] = csrfToken
   config.headers.Authorization = `Bearer ${token}`
-
-  // try {
-  //   const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/sanctum/csrf-cookie`);
-  //   config.headers['X-XSRF-TOKEN'] = response.data.csrf_token;
-  // } catch (error) {
-  //   console.error("Failed to fetch CSRF token", error);
-  // }
-
   return config;
 })
 
