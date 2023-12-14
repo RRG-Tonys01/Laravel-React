@@ -1,0 +1,30 @@
+main{
+  position: relative;
+  left: 15%;
+}
+
+header{
+  padding: 1.5rem 2rem;
+}
+header p{
+  font-size: 1.5rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 150;
+}
+
+.time__ofDay{
+  font-size: 1.7rem;
+  color: #4481eb;
+  font-weight: bolder;
+}
+
+.time__ofDay{
+
+}
+
+.user__name{
+  font-size: 1.7rem;
+  font-weight: bolder;
+  font-style: italic;
+  color: #1a3c76;
+}

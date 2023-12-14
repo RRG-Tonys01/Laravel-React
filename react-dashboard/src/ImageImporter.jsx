@@ -1,7 +1,5 @@
-import Dashboard from './assets/images/dashboard.png';
+import logoImage from './assets/images/logo-image.png'
 
-const image = {
-  Dashboard,
-}
+const image = {logoImage}
 
 export default image;
