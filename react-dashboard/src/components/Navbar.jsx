@@ -10,36 +10,45 @@ export default function Navbar({currentPage}){
         <div className="navbar__brand">
           <div className="sidebar__brand">
             <div className="sidebar__header">
-              <Link>
-                <span>Control Panel</span>
+              <Link to="/dashboard">
+                <img src={image.logoImage} alt="Logo Image" />
               </Link>
             </div>
-            <div className="sidebar__body">
-              <nav>
-                <ul>
-                  <Link to="/dashboard" className="nav__item">
-                    <IoHome className="nav__icon"/>
-                    <li>Home</li>
-                  </Link>
-                  <Link className="nav__item">
-                    <FaUsers className="nav__icon"/>
-                    <li>User</li>
-                  </Link>
-                  <Link className="nav__item">
-                    <FaTasks className="nav__icon"/>
-                    <li>Task</li>
-                  </Link>
-                  <Link className="nav__item">
-                    <FaUser className="nav__icon"/>
-                    <li>Profile</li>
-                  </Link>
-                  <Link className="nav__item">
-                    <IoSettingsSharp className="nav__icon"/>
-                    <li>Settings</li>
-                  </Link>
-                </ul>
-              </nav>
+          </div>
+          <div className="line__break"></div>
+          <div className="sidebar__profile">
+            <div className="profile__image">
+              <img src={image.RRG_User} alt="RRG User"></img>
             </div>
+          </div>
+          <div className="line__break"></div>
+
+          <div className="sidebar__body">
+            <p>Menu</p>
+            <nav>
+              <ul>
+                <Link to="/dashboard" className="nav__item">
+                  <IoHome className="nav__icon"/>
+                  {/* <li>Home</li> */}
+                </Link>
+                <Link to="/users" className="nav__item">
+                  <FaUsers className="nav__icon"/>
+                  {/* <li>User</li> */}
+                </Link>
+                <Link to="/task" className="nav__item">
+                  <FaTasks className="nav__icon"/>
+                  {/* <li>Task</li> */}
+                </Link>
+                <Link to="/profile" className="nav__item">
+                  <FaUser className="nav__icon"/>
+                  {/* <li>Profile</li> */}
+                </Link>
+                <Link to="/settings" className="nav__item">
+                  <IoSettingsSharp className="nav__icon"/>
+                  {/* <li>Settings</li> */}
+                </Link>
+              </ul>
+            </nav>
           </div>
         </div>
     )

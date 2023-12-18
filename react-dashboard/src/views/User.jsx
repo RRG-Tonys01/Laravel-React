@@ -1,17 +1,16 @@
+import { useEffect } from "react";
+import Navbar from "../components/Navbar";
+import axiosClient from "../axios-client.js";
+
 export default function Users(){
+  useEffect(() => {})
+
+
+
     return (
-        <div className="container">
-            <div className="row">
-              <div className="d-flex justify-content-between">
-                <div className="py-4">
-                  <div className="border border-black">
-                    <form>
-                      <input type="text" placeholder="Search User" className="form-control"/>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div>
+          <Navbar currentPage={"users"}/>
+
         </div>
     )
 }

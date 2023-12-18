@@ -1,0 +1,12 @@
+main{
+  position: relative;
+  margin-left: 17.5%;
+}
+
+.employee__profile{
+  padding: 2rem;
+  border: 1px solid black;
+  width: 50%;
+  height: 1024px;
+  background: rgba(154, 148, 152, 0.8);
+}

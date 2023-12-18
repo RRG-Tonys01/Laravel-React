@@ -5,9 +5,9 @@ import NotFound from "./views/NotFound";
 import DefaultLayout from "./components/DefaultLayout";
 import GuestLayout from "./components/GuestLayout";
 import Dashboard from "./views/Dashboard";
-import Table from "./views/Table";
 import Graph from "./views/Graph";
 import Home from "./views/Home";
+import Profile from "./views/Profile";
 
 
 const router = createBrowserRouter([
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
         element: <Dashboard/>
       },
       {
-        path: '/table',
-        element: <Table/>
+        path: '/profile',
+        element: <Profile/>
       },
       {
         path: '/graph',
