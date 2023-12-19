@@ -22,3 +22,7 @@ li{
   --font-color-primary: #C1C8E4;
   --gradient-color-primary: #8860D0;
 }
+
+body{
+  background-color: #e8eff4;
+}
