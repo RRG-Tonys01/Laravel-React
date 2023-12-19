@@ -41,12 +41,12 @@ export default function Dashboard(){
 
   return (
     <div>
-      <Navbar currentPage={"dashboard"}/>
-      <main>
+      <Navbar currentPage={"dashboard"} user={user}/>
+      {/* <main>
         <header>
           <p>Good <span className="time__ofDay">{timeOfDay}</span>, <span className="user__name">{user.employee_name}</span></p>
         </header>
-      </main>
+      </main> */}
     </div>
   )
 }
