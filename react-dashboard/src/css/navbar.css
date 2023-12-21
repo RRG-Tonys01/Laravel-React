@@ -19,6 +19,14 @@
   margin: 1rem 0 0 0;
 }
 
+.sidebar__header img{
+  display: none;
+  width: 100%;
+  padding: auto;
+  border-radius: 50%;
+  border: 1px solid var(--font-color-primary);
+}
+
 .sidebar__header h3{
   padding: 0.5rem 0.5rem 0 0.5rem;
   font-family: 'Open Sans', sans-serif;
@@ -70,7 +78,6 @@
   padding: 0.5rem 0;
   color: var(--font-color-primary);
   margin: auto 0;
-  opacity: 1;
 }
 
 .user__profile .user__email{
@@ -143,3 +150,59 @@
   background-color: #4768bb;
 }
 /* Sidebar Navigation Style End */
+
+/* Responsive Design Style Start*/
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .navbar__brand{
+    opacity: 0;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+  .navbar__brand{
+    width: 5rem;
+  }
+
+  .sidebar__header h3{
+    display: none;
+  }
+
+  .sidebar__header{
+    width: 100%;
+    margin: 0.4rem 0;
+    padding: 0.4rem;
+  }
+
+  .line__break:nth-child(1){
+    margin: 1rem auto;
+  }
+
+  .profile__image{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .sidebar__body > nav ul{
+    padding-left: 0;
+  }
+
+
+  .sidebar__header img{
+    display: block;
+  }
+
+  .nav__item{
+    display: block;
+    margin: auto;
+  }
+
+  .user__profile,
+  .user__dropdown,
+  .nav__item li{
+    display: none;
+  }
+}

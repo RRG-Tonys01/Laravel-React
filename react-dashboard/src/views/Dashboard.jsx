@@ -111,7 +111,7 @@ export default function Dashboard(){
   return (
     <div>
       <Navbar currentPage={"dashboard"} user={user}/>
-      <main>
+      {/* <main>
         <header>
           <div className="highlight__box">
             <div className="attribute__box">
@@ -159,17 +159,17 @@ export default function Dashboard(){
           <div className="employee__social">
             <div className="employee__events">
               <article>
-                {/* All Events and Agenda from HR */}
+                All Events and Agenda from HR
               </article>
             </div>
             <div className="employee__colleague">
               <article>
-                {/* All Employee Colleagues at same Department */}
+                All Employee Colleagues at same Department
               </article>
             </div>
           </div>
         </section>
-      </main>
+      </main> */}
     </div>
   )
 }

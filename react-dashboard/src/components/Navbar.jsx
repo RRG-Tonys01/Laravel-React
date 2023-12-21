@@ -12,6 +12,7 @@ export default function Navbar({currentPage, user}){
           <div className="sidebar__brand">
             <div className="sidebar__header">
               <Link to="/dashboard">
+                <img src={image.logoImage} alt="Logo Image"/>
                 <h3>Control Panel</h3>
               </Link>
             </div>
