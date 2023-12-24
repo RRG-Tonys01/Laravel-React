@@ -1,66 +1,172 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import image from "../ImageImporter";
 import '../css/navbar.css';
-import { IoHome, IoSettingsSharp } from "react-icons/io5";
-import { FaUsers, FaTasks, FaUser } from "react-icons/fa";
-import { FaChevronDown } from "react-icons/fa";
+import { IoSettingsSharp, IoDocumentTextOutline } from "react-icons/io5";
+import { FaUsers, FaUserTag} from "react-icons/fa";
+import {
+  MdDashboard,
+  MdOutlinePermMedia,
+  MdSecurity,
+  MdOutlineImportExport,
+  MdOutlineSupportAgent
+} from "react-icons/md";
+import { VscGraphLine, VscRunErrors } from "react-icons/vsc";
+import { TbChartInfographic } from "react-icons/tb";
+import { PiArticleMediumLight, PiUserList } from "react-icons/pi";
+import { BiSolidCategoryAlt } from "react-icons/bi";
+import { LuPalette, LuDatabaseBackup } from "react-icons/lu";
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { CiLogout } from "react-icons/ci";
+import { HiOutlineDocumentReport } from "react-icons/hi";
+import { FiDatabase } from "react-icons/fi";
+import { RiQuestionAnswerLine } from "react-icons/ri";
 
-export default function Navbar({currentPage, user}){
+
+export default function Navbar({currentPage}){
     return (
-        <div className="navbar__brand">
-          <div className="sidebar__brand">
-            <div className="sidebar__header">
-              <Link to="/dashboard">
-                <img src={image.logoImage} alt="Logo Image"/>
-                <h3>Control Panel</h3>
-              </Link>
-            </div>
-          </div>
+      <div className="navbar__brand">
+        <div className="navbar__header">
+          <p>Control Panel</p>
+        </div>
 
-          <div className="line__break"></div>
-
-          <div className="sidebar__profile">
-            <div className="profile__image">
-              <img src={image.RRG_User} alt="RRG User"></img>
-            </div>
-            <div className="user__profile">
-              <p className="user__email">Username</p>
-              <span>My Account</span>
-            </div>
-            <div className="user__dropdown">
-              <FaChevronDown className="dropdown__icon"/>
-            </div>
-          </div>
-          <div className="line__break"></div>
-
-          <div className="sidebar__body">
-            <p>Menu</p>
+        <div className="navbar__wrapper">
+          <div className="navbar__category">
+            <p className="category__name">Main</p>
             <nav>
               <ul>
-                <Link to="/dashboard" className="nav__item">
-                  <IoHome className="nav__icon"/>
-                  <li>Home</li>
+                <Link to="/dashboard" className="list__item active">
+                  <MdDashboard className="list__icon"/>
+                  <li>Dashboard</li>
                 </Link>
-                <Link to="/users" className="nav__item">
-                  <FaUsers className="nav__icon"/>
-                  <li>User</li>
+                {/* <Link to="/dashboard" className="list__item">
+                  <VscGraphLine  className="list__icon"/>
+                  <li>Statistics</li>
                 </Link>
-                <Link to="/task" className="nav__item">
-                  <FaTasks className="nav__icon"/>
-                  <li>Task</li>
+                <Link to="/dashboard" className="list__item">
+                  <TbChartInfographic className="list__icon"/>
+                  <li>Analytics</li>
+                </Link> */}
+              </ul>
+            </nav>
+          </div>
+
+          <div className="navbar__category">
+            <p className="category__name">Management</p>
+            <nav>
+              <ul>
+                <Link to="/dashboard" className="list__item">
+                    <FaUsers className="list__icon"/>
+                    <li>Users</li>
                 </Link>
-                <Link to="/profile" className="nav__item">
-                  <FaUser className="nav__icon"/>
-                  <li>Profile</li>
+                <Link to="/dashboard" className="list__item">
+                    <PiArticleMediumLight className="list__icon"/>
+                    <li>Articles</li>
                 </Link>
-                <Link to="/settings" className="nav__item">
-                  <IoSettingsSharp className="nav__icon"/>
-                  <li>Settings</li>
+                <Link to="/dashboard" className="list__item">
+                    <BiSolidCategoryAlt className="list__icon"/>
+                    <li>Categories</li>
+                </Link>
+                <Link to="/dashboard" className="list__item">
+                    <FaUserTag className="list__icon"/>
+                    <li>Tags</li>
+                </Link>
+                <Link to="/dashboard" className="list__item">
+                    <MdOutlinePermMedia className="list__icon"/>
+                    <li>Media</li>
+                </Link>
+              </ul>
+            </nav>
+          </div>
+
+          <div className="navbar__category">
+            <p className="category__name">Settings</p>
+            <nav>
+              <ul>
+                <Link to="/dashboard" className="list__item">
+                    <IoSettingsSharp className="list__icon"/>
+                    <li>General Settings</li>
+                </Link>
+                <Link to="/dashboard" className="list__item">
+                    <MdSecurity className="list__icon"/>
+                    <li>Security</li>
+                </Link>
+                <Link to="/dashboard" className="list__item">
+                    <LuPalette className="list__icon"/>
+                    <li>Appereance</li>
+                </Link>
+                <Link to="/dashboard" className="list__item">
+                    <IoMdNotificationsOutline className="list__icon"/>
+                    <li>Notifications</li>
+                </Link>
+              </ul>
+            </nav>
+          </div>
+
+          <div className="navbar__category">
+            <p className="category__name">Reports</p>
+            <nav>
+              <ul>
+                <Link to="/dashboard" className="list__item">
+                    <HiOutlineDocumentReport className="list__icon"/>
+                    <li>Sales Report</li>
+                </Link>
+                <Link to="/dashboard" className="list__item">
+                    <PiUserList className="list__icon"/>
+                    <li>User Activity</li>
+                </Link>
+                <Link to="/dashboard" className="list__item">
+                    <VscRunErrors className="list__icon"/>
+                    <li>Error Logs</li>
+                </Link>
+              </ul>
+            </nav>
+          </div>
+
+          <div className="navbar__category">
+            <p className="category__name">Tools</p>
+            <nav>
+              <ul>
+                <Link to="/dashboard" className="list__item">
+                    <LuDatabaseBackup className="list__icon"/>
+                    <li>Backup & Restore</li>
+                </Link>
+                <Link to="/dashboard" className="list__item">
+                    <MdOutlineImportExport className="list__icon"/>
+                    <li>Import/Export</li>
+                </Link>
+                <Link to="/dashboard" className="list__item">
+                    <FiDatabase className="list__icon"/>
+                    <li>Database</li>
+                </Link>
+              </ul>
+            </nav>
+          </div>
+
+          <div className="navbar__category">
+            <p className="category__name">Help & Support</p>
+            <nav>
+              <ul>
+                <Link to="/dashboard" className="list__item">
+                    <IoDocumentTextOutline className="list__icon"/>
+                    <li>Documentation</li>
+                </Link>
+                <Link to="/dashboard" className="list__item">
+                    <RiQuestionAnswerLine className="list__icon"/>
+                    <li>FAQs</li>
+                </Link>
+                <Link to="/dashboard" className="list__item">
+                    <MdOutlineSupportAgent className="list__icon"/>
+                    <li>Contact Support</li>
                 </Link>
               </ul>
             </nav>
           </div>
         </div>
+
+        <div className="navbar__footer">
+          <CiLogout className="footer__icon"/>
+          <p>Logout</p>
+        </div>
+      </div>
     )
 }

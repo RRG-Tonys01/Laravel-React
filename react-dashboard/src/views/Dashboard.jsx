@@ -110,66 +110,7 @@ export default function Dashboard(){
 
   return (
     <div>
-      <Navbar currentPage={"dashboard"} user={user}/>
-      {/* <main>
-        <header>
-          <div className="highlight__box">
-            <div className="attribute__box">
-              <span>Daily Tasks</span>
-              <h3>500+</h3>
-            </div>
-            <div className="icon__container">
-              <MdOutlineTaskAlt className="icon__box"/>
-            </div>
-          </div>
-          <div className="highlight__box">
-            <div className="attribute__box">
-              <span>Daily Tasks</span>
-              <h3>500+</h3>
-            </div>
-            <div className="icon__container">
-              <MdOutlineTaskAlt className="icon__box"/>
-            </div>
-          </div>
-          <div className="highlight__box">
-            <div className="attribute__box">
-              <span>Behavior Score</span>
-              <h3>88.8%</h3>
-            </div>
-            <div className="icon__container">
-              <FaRegFaceSmile className="icon__box"/>
-            </div>
-          </div>
-        </header>
-
-        <section>
-          <div className="employee__ability">
-            <div className="employee__performance">
-              <h3>Your Performance</h3>
-              <article>
-                <Chart
-                  type="line"
-                  data={performanceData}
-                  options={performanceDataOptions}
-                />
-              </article>
-            </div>
-          </div>
-
-          <div className="employee__social">
-            <div className="employee__events">
-              <article>
-                All Events and Agenda from HR
-              </article>
-            </div>
-            <div className="employee__colleague">
-              <article>
-                All Employee Colleagues at same Department
-              </article>
-            </div>
-          </div>
-        </section>
-      </main> */}
+      <Navbar currentPage={"dashboard"}/>
     </div>
   )
 }
