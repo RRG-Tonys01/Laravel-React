@@ -15,6 +15,7 @@ import {
 
 // Other Components
 import Navbar from "../components/Navbar";
+import Header from "../components/Header";
 
 // Import CSS File
 import "../css/dashboard.css"
@@ -111,6 +112,7 @@ export default function Dashboard(){
   return (
     <div>
       <Navbar currentPage={"dashboard"}/>
+      <Header user={user}/>
     </div>
   )
 }

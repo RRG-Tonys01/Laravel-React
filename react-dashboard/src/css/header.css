@@ -1,0 +1,10 @@
+.header__wrapper{
+  margin-left: 18.75rem;
+  width: 100%;
+  background: var(--color-background-primary);
+  height: 4rem;
+  border-left: 1px solid var(--font-color-primary);
+  border-bottom: 1px solid var(--font-color-primary);
+  display: flex;
+  padding: 0.5rem 1rem;
+}
