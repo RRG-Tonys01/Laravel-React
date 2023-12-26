@@ -34,7 +34,10 @@ export default function Navbar({currentPage}){
             <p className="category__name">Main</p>
             <nav>
               <ul>
-                <Link to="/dashboard" className="list__item active">
+                <Link
+                  to="/dashboard"
+                  className={currentPage === 'dashboard' ? 'list__item active' : 'list__item'}
+                >
                   <MdDashboard className="list__icon"/>
                   <li>Dashboard</li>
                 </Link>
@@ -54,7 +57,10 @@ export default function Navbar({currentPage}){
             <p className="category__name">Management</p>
             <nav>
               <ul>
-                <Link to="/dashboard" className="list__item">
+                <Link
+                  to="/users"
+                  className={currentPage === 'users' ? 'list__item active' : 'list__item'}
+                >
                     <FaUsers className="list__icon"/>
                     <li>Users</li>
                 </Link>

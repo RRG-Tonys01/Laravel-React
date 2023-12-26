@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
-class EmployeeController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,7 +39,7 @@ class EmployeeController extends Controller
      */
     public function show(string $id)
     {
-        return response('Hello Show');
+        //
     }
 
     /**
@@ -64,4 +65,6 @@ class EmployeeController extends Controller
     {
         //
     }
+
+
 }

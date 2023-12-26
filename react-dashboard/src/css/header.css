@@ -1,10 +1,119 @@
 .header__wrapper{
   margin-left: 18.75rem;
-  width: 100%;
+  width: calc(100%-18.75rem)rem;
   background: var(--color-background-primary);
   height: 4rem;
   border-left: 1px solid var(--font-color-primary);
   border-bottom: 1px solid var(--font-color-primary);
   display: flex;
   padding: 0.5rem 1rem;
+  justify-content: space-between;
+}
+
+.search__box,
+.highlight__icon{
+  width: 25rem;
+  height: 2rem;
+  margin: auto 0;
+}
+
+.search__box > form{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 0 0.5rem;
+  margin: 0;
+}
+
+.search__box > form input{
+  padding: 0.5rem;
+  width: 80%;
+  border: 0;
+}
+
+input::placeholder{
+  font-style: italic;
+  color: var(--font-color-primary);
+}
+
+.search__box > form button{
+  width: 2rem;
+  height: 100%;
+  background: white;
+  outline: none;
+  border: 0;
+  display: flex;
+  justify-content: center;
+}
+
+
+button > .search__icon{
+  margin: auto 0;
+  font-size: 1.2rem;
+  color: var(--font-color-primary);
+  font-weight: 800;
+}
+
+.highlight__icon{
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: end;
+  padding-right: 2rem;
+}
+
+.calender__date{
+  width: 12rem;
+  height: 100%;
+  background: white;
+  margin: auto 0.3rem;
+}
+
+.notification{
+  width: 2rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  color: #000;
+}
+
+.notification:hover{
+  color: var(--font-color-primary);
+  transition: color 0.2s ease-in;
+}
+
+.notification__number{
+  width: 1rem;
+  height: 1rem;
+  background: red;
+  position: fixed;
+  border-radius: 50%;
+  right: 5.5rem;
+  top: 1rem;
+  font-size: 0.7rem;
+  color: #fff;
+  text-align: center;
+}
+
+.notification > .notification__icon{
+  margin: auto;
+  font-size: 2rem;
+}
+
+.user__profile{
+  width: 2rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.user__profile > img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  margin: auto;
+  align-items: center;
+  border: 1px solid var(--font-color-primary);
 }
