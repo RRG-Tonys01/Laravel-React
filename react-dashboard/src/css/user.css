@@ -1,0 +1,14 @@
+.member__header{
+  padding: 1rem;
+  display: flex;
+  width: 80%;
+  height: 4rem;
+  border-bottom: 1px solid var(--font-color-primary);
+}
+
+.member__header > p {
+  font-size: 2.5rem;
+  margin: auto 0;
+  font-weight: 600;
+  text-align: start;
+}

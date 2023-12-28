@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
@@ -13,8 +14,13 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $all_employee = Employee::all();
-        return response($all_employee);
+        $employees = DB::table('employees as e')
+                    ->join('positions as p', 'e.positionID', '=', 'p.positionID')
+                    ->join('departments as d', 'p.deptID', '=', 'd.deptID')
+                    ->select('e.employee_name', 'e.email', 'p.position_name', 'd.dept_name')
+                    ->get();
+        // $all_employee = Employee::all();
+        return response($employees);
     }
 
     /**

@@ -23,7 +23,7 @@ export default function Header(user) {
           {/* <DatePickerValue/> */}
         </div>
         <div className='notification'>
-          <div className='notification__number'>9+</div>
+          {/* <div className='notification__number'>9+</div> */}
           <IoMdNotificationsOutline className="notification__icon"/>
         </div>
         <div className='user__profile'>

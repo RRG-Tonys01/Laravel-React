@@ -26,7 +26,12 @@ export default function Dashboard(){
     <div>
       <Navbar currentPage={"dashboard"}/>
       <Header user={user}/>
-      dasboard
+      <main>
+        <div>
+          <p>User Name : {user.employee_name}</p>
+          <p>Email : {user.email}</p>
+        </div>
+      </main>
     </div>
   )
 }

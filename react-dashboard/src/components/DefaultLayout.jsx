@@ -6,20 +6,34 @@ import Loading from "./Loading.jsx";
 
 export default function DefaultLayout() {
   const {user, token, setUser, setToken} = useStateContext();
+  const [allEmployee, setAllEmployee] = useState(null);
   const [loading, setLoading] = useState(true);
 
   if (!token) {
     return <Navigate to="/login"/>
   }
 
+  const fetchData = async () => {
+    try {
+      const user_request = await axiosClient.get('/user');
+      var {data} = user_request;
+      setUser(data);
+
+      const employee_res = await axiosClient.get('/employee');
+      var {data} = employee_res;
+      setAllEmployee(data);
+
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     setLoading(true);
-
-    axiosClient.get('/user').then(({data}) => {
-      setUser(data)
-    }).finally(() => {
-      setLoading(false);
-    });
+    fetchData()
   }, [])
 
   return (
@@ -27,7 +41,7 @@ export default function DefaultLayout() {
       {loading ? (
         <Loading />
       ) : (
-        <Outlet context={{user}}/>
+        <Outlet context={{user, allEmployee}}/>
       )}
     </div>
   )
